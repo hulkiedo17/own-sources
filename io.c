@@ -5,6 +5,8 @@
 
 char* read_file_descriptor(int fd)
 {
+	if(fd <= 0)
+		return NULL;
 	/*int c;
 	char *buffer = NULL;
 
@@ -37,10 +39,21 @@ char* read_file_stream(FILE *stream)
 	{
 		c = fgetc(stream);
 
-		if(c == EOF || c == '\n')
+		if(c == '\n')
 		{
 			buffer[position] = '\0';
 			return buffer;
+		}
+		else if(c == EOF)
+		{
+			if(position != 0)
+			{
+				buffer[position] = '\0';
+				return buffer;
+			}
+
+			free(buffer);
+			return NULL;
 		}
 
 		buffer[position++] = c;
@@ -54,6 +67,4 @@ char* read_file_stream(FILE *stream)
 				fail(stderr, "error: allocation failed\n");
 		}
 	}
-
-	return NULL;
 }
