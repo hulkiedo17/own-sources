@@ -11,7 +11,7 @@ int main(void)
 
 	fp = fopen("test.txt", "r");
 	if(fp == NULL)
-		fail(stderr, "cannot open file\n");
+		p_error("cannot open file\n");
 
 	while((buffer = read_file_stream(fp)) != NULL)
 	{

@@ -12,7 +12,7 @@ char* read_file_descriptor(int fd)
 
 	buffer = calloc(buffer_size, sizeof(char));
 	if(!buffer)
-		fail(stderr, "error: allocation failed\n");
+		p_error("error: %s: allocation failed\n", __func__);
 
 	while(1)
 	{
@@ -33,7 +33,7 @@ char* read_file_stream(FILE *stream)
 
 	buffer = calloc(buffer_size, sizeof(char));
 	if(!buffer)
-		fail(stderr, "error: allocation failed\n");
+		p_error("error: %s: allocation failed\n", __func__);
 
 	while(1)
 	{
@@ -64,7 +64,7 @@ char* read_file_stream(FILE *stream)
 
 			buffer = realloc(buffer, buffer_size);
 			if(!buffer)
-				fail(stderr, "error: allocation failed\n");
+				p_error("error: %s: allocation failed\n", __func__);
 		}
 	}
 }

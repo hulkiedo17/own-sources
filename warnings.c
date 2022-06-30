@@ -2,21 +2,21 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-void warning(FILE *stream, const char *fmt, ...)
+void p_warn(const char *fmt, ...)
 {
 	va_list ap;
 
 	va_start(ap, fmt);
-	vfprintf(stream, fmt, ap);
+	vfprintf(stderr, fmt, ap);
 	va_end(ap);
 }
 
-void fail(FILE *stream, const char *fmt, ...)
+void p_error(const char *fmt, ...)
 {
 	va_list ap;
 
 	va_start(ap, fmt);
-	vfprintf(stream, fmt, ap);
+	vfprintf(stderr, fmt, ap);
 	va_end(ap);
 
 	exit(EXIT_FAILURE);

@@ -2,8 +2,8 @@
 #define HEADER_H
 
 // warnings.c
-void warning(FILE *stream, const char *fmt, ...);
-void fail(FILE *stream, const char *fmt, ...);
+void p_warn(const char *fmt, ...);
+void p_error(const char *fmt, ...);
 
 // string.c
 #define BUFFER_SIZE 512
