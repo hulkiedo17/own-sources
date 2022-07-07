@@ -1,7 +1,7 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-// warnings.c
+// err.c
 void p_warn(const char *fmt, ...);
 void p_error(const char *fmt, ...);
 

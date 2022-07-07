@@ -8,16 +8,13 @@ char* str_dup(const char *str)
 {
 	assert(str != NULL);
 
-	size_t len = (size_t)0;
 	char *buf = NULL;
 
-	len = strlen(str) + 1;
-
-	buf = calloc(len, sizeof(char));
+	buf = calloc(strlen(str) + 1, sizeof(char));
 	if(!buf)
 		p_error("error: %s: allocation failed\n", __func__);
 
-	memcpy(buf, str, len);
+	memcpy(buf, str, strlen(str));
 
 	return buf;
 }
