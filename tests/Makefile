@@ -2,7 +2,7 @@
 
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror -g -O0 -std=c11 -Wpedantic
-SRC := ../io.c ../warnings.c ../str.c test.c
+SRC := ../io.c ../err.c ../str.c test.c
 EXEC := test
 
 .PHONY: all

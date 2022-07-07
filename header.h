@@ -7,7 +7,7 @@ void p_error(const char *fmt, ...);
 
 // io.c
 #define BUFFER_SIZE 512
-char* read_file_descriptor(int fd);
+//char* read_file_descriptor(int fd, size_t *readed);
 char* read_file_stream(FILE *stream);
 
 // str.c
