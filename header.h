@@ -16,4 +16,7 @@ char* str_dup(const char *str);
 char* fgets_own(char *s, int size, FILE *stream);
 ssize_t getline_own(char **lineptr, size_t *n, int terminator, FILE *stream);
 
+// file.c
+FILE* open_file_stream(const char *filename, const char *mode);
+
 #endif /* HEADER_H */

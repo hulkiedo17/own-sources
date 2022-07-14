@@ -15,7 +15,7 @@ void read_stream_test1(void)
 	char *line = NULL;
 	FILE *fp = NULL;
 
-	fp = fopen(file, "r");
+	fp = open_file_stream(file, "r");
 
 	if(!fp)
 		p_error("cannot open file\n");
@@ -41,7 +41,7 @@ void read_stream_test2(void)
 	char buffer[buffer_size];
 	FILE *fp = NULL;
 
-	fp = fopen(file, "r");
+	fp = open_file_stream(file, "r");
 
 	while(fgets_own(buffer, buffer_size, fp) != NULL)
 	{
@@ -62,7 +62,7 @@ void read_stream_test3(void)
 	char *line = NULL;
 	FILE *fp = NULL;
 
-	fp = fopen(file, "r");
+	fp = open_file_stream(file, "r");
 
 	while((read = getline_own(&line, &len, '\n', fp)) != -1)
 	{
