@@ -11,6 +11,9 @@ void p_error(const char *fmt, ...);
 char* read_file_stream(FILE *stream);
 
 // str.c
+#define LINE_SIZE 256
 char* str_dup(const char *str);
+char* fgets_own(char *s, int size, FILE *stream);
+ssize_t getline_own(char **lineptr, size_t *n, int terminator, FILE *stream);
 
 #endif /* HEADER_H */

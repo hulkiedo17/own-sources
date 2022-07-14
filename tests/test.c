@@ -5,20 +5,17 @@
 #include <fcntl.h>
 #include "../header.h"
 
-void read_stream_test(void)
+static char *file = NULL;
+
+void read_stream_test1(void)
 {
 	printf("[TEST] read_stream_test\n");
 
-	size_t line_count = (size_t)0;
+	size_t line_count = 0;
 	char *line = NULL;
-	char *file = NULL;
 	FILE *fp = NULL;
 
-	file = str_dup("test.txt");
-
 	fp = fopen(file, "r");
-
-	free(file); // avoiding memory leak
 
 	if(!fp)
 		p_error("cannot open file\n");
@@ -31,6 +28,48 @@ void read_stream_test(void)
 		line = NULL;
 	}
 
+	fclose(fp);
+	printf("[END TEST] read_stream_test\n\n");
+}
+
+void read_stream_test2(void)
+{
+	printf("[TEST] read_stream_test\n");
+
+	const size_t buffer_size = 512;
+	size_t line_count = 0;
+	char buffer[buffer_size];
+	FILE *fp = NULL;
+
+	fp = fopen(file, "r");
+
+	while(fgets_own(buffer, buffer_size, fp) != NULL)
+	{
+		printf("%zd\t%s", ++line_count, buffer);
+	}
+
+	fclose(fp);
+	printf("[END TEST] read_stream_test\n\n");
+}
+
+void read_stream_test3(void)
+{
+	printf("[TEST] read_stream_test\n");
+
+	size_t len = 0;
+	size_t line_count = 0;
+	ssize_t read = -1;
+	char *line = NULL;
+	FILE *fp = NULL;
+
+	fp = fopen(file, "r");
+
+	while((read = getline_own(&line, &len, '\n', fp)) != -1)
+	{
+		printf("%zd-%zu\t%s", ++line_count, read, line);
+	}
+
+	free(line);
 	fclose(fp);
 	printf("[END TEST] read_stream_test\n");
 }
@@ -69,7 +108,16 @@ void read_stream_test(void)
 
 int main(void)
 {
-	read_stream_test();
+	file = str_dup("test.txt");
+
+	read_stream_test1();
+
+	read_stream_test2();
+
+	read_stream_test3();
+	
 	//read_descriptor_test();
+
+	free(file);
 	return EXIT_SUCCESS;
 }

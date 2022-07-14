@@ -57,6 +57,9 @@ char* read_file_stream(FILE *stream)
 {
 	assert(stream != NULL);
 
+	if(ferror(stream))
+		return NULL;
+
 	int c;
 	size_t len = BUFFER_SIZE;
 	size_t pos = 0;
