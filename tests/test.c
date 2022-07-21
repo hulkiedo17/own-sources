@@ -74,7 +74,7 @@ void read_stream_test3(void)
 	printf("[END TEST] read_stream_test\n");
 }
 
-/*void read_descriptor_test(void)
+/*void read_descriptor_test4(void)
 {
 	printf("[TEST] read_descriptor_test\n");
 
@@ -116,7 +116,7 @@ int main(void)
 
 	read_stream_test3();
 	
-	//read_descriptor_test();
+	//read_descriptor_test4();
 
 	free(file);
 	return EXIT_SUCCESS;
